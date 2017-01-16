@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kantilever_order_management</string>
+    <string name="title_order_detail">Order Detail</string>
+</resources>
