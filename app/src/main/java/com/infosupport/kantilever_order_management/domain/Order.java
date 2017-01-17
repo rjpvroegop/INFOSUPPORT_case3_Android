@@ -13,6 +13,8 @@ public class Order {
         this.status = status;
     }
 
+    public Order(){};
+
     @Override
     public String toString(){
         return "Order: " + id;
