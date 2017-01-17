@@ -1,23 +1,28 @@
 package com.infosupport.kantilever_order_management.domain;
 
+
+import java.util.Collection;
+
 /**
  * Created by kdomi on 17-1-2017.
  */
 
 public class Order {
-    private String id, orderDate, status;
-
-    public Order(String id, String orderDate, String status) {
-        this.id = id;
-        this.orderDate = orderDate;
-        this.status = status;
-    }
-
-    public Order(){};
+    private String id, orderTime, orderState;
+    private Address shippingAddress;
+    private Collection<OrderItem> items;
 
     @Override
     public String toString(){
         return "Order: " + id;
+    }
+
+    public Order(String id, Collection<OrderItem> items, String orderState, String orderTime, Address shippingAddress) {
+        this.id = id;
+        this.items = items;
+        this.orderState = orderState;
+        this.orderTime = orderTime;
+        this.shippingAddress = shippingAddress;
     }
 
     public String getId() {
@@ -28,19 +33,35 @@ public class Order {
         this.id = id;
     }
 
-    public String getOrderDate() {
-        return orderDate;
+    public Collection<OrderItem> getItems() {
+        return items;
     }
 
-    public void setOrderDate(String orderDate) {
-        this.orderDate = orderDate;
+    public void setItems(Collection<OrderItem> items) {
+        this.items = items;
     }
 
-    public String getStatus() {
-        return status;
+    public String getOrderState() {
+        return orderState;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setOrderState(String orderState) {
+        this.orderState = orderState;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 }
