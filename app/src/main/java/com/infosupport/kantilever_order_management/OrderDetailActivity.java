@@ -3,6 +3,10 @@ package com.infosupport.kantilever_order_management;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.infosupport.kantilever_order_management.content.Content;
+
+import static com.infosupport.kantilever_order_management.OrderDetailFragment.ARG_ITEM_ID;
+
 /**
  * An activity representing a single Person detail screen. This activity is only
  * used on handset devices. On tablet-size devices, item details are presented
@@ -31,13 +35,19 @@ public class OrderDetailActivity extends FragmentActivity {
 			// Create the detail fragment and add it to the activity
 			// using a fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putString(OrderDetailFragment.ARG_ITEM_ID, getIntent()
-					.getStringExtra(OrderDetailFragment.ARG_ITEM_ID));
+			arguments.putString(ARG_ITEM_ID, getIntent()
+					.getStringExtra(ARG_ITEM_ID));
 			// ADD CODE
 			OrderDetailFragment fragment = new OrderDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction().
 					add(R.id.order_detail_container, fragment).commit();
+			//knoppen op basis van status
+			if(Content.getOrderMap().get(getIntent().getStringExtra(ARG_ITEM_ID)).getOrderState().equals("Posted")){
+				getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, new OrderDetailStatePostedFragment()).commit();
+			} else {
+				getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, new OrderDetailStatePackedFragment()).commit();
+			}
 		}
 	}
 
