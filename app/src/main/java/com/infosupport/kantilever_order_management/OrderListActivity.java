@@ -16,6 +16,7 @@ public class OrderListActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_list);
 
+
 		//als het een tabletscherm betreft two pane layout
 		if (findViewById(R.id.order_detail_container) != null) {
 			mTwoPane = true;

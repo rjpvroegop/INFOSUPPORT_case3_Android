@@ -8,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.infosupport.kantilever_order_management.Adapters.OrderItemListAdapter;
+import com.infosupport.kantilever_order_management.adapters.OrderItemListAdapter;
 import com.infosupport.kantilever_order_management.content.Content;
 import com.infosupport.kantilever_order_management.domain.Order;
-
-import static android.R.attr.fragment;
-import static android.R.attr.order;
 
 /**
  * A fragment representing a single Person detail screen. This fragment is
@@ -44,9 +41,6 @@ public class OrderDetailFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
-			// Load the content specified by the fragment
-			// arguments. In a real-world scenario, use a Loader
-			// to load content from a content provider.
 			mItem = Content.getOrderMap().get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
