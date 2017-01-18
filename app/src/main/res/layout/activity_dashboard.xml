@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_dashboard">
+
+
+    <Button
+        android:text="Orders ready to pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/posted_orders_button" />
+
+    <Button
+        android:text="Orders ready to send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/packed_orders_button" />
+</LinearLayout>

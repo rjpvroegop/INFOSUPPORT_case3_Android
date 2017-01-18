@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.infosupport.kantilever_order_management.content.Content;
+
 public class OrderListActivity extends FragmentActivity implements
 		OrderListFragment.Callbacks {
 
@@ -13,6 +15,7 @@ public class OrderListActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_list);
+
 
 		//als het een tabletscherm betreft two pane layout
 		if (findViewById(R.id.order_detail_container) != null) {
@@ -31,7 +34,14 @@ public class OrderListActivity extends FragmentActivity implements
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction().
 					replace(R.id.order_detail_container, fragment).commit();
-			
+
+            //knoppen op basis van status
+            if(Content.getOrderMap().get(id).getOrderState().equals("Posted")){
+                getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, new OrderDetailStatePostedFragment()).commit();
+            } else {
+                getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, new OrderDetailStatePackedFragment()).commit();
+            }
+
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.

@@ -11,6 +11,7 @@ import com.infosupport.kantilever_order_management.content.Content;
 import com.infosupport.kantilever_order_management.domain.Order;
 
 
+
 public class OrderListFragment extends ListFragment {
 
 	private static final String STATE_ACTIVATED_POSITION = "activated_position";
@@ -18,6 +19,8 @@ public class OrderListFragment extends ListFragment {
 	private Callbacks mCallbacks = sDummyCallbacks;
 
 	private int mActivatedPosition = ListView.INVALID_POSITION;
+
+	public static String orderState = "orderState";
 
 	public interface Callbacks {
 		/**
@@ -38,6 +41,17 @@ public class OrderListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if(getActivity().getIntent().getStringExtra("OrderState") != null){
+			orderState = getActivity().getIntent().getStringExtra("OrderState");
+			if(orderState.equals("Posted")){
+				getActivity().setTitle("Orders ready to pick");
+			} else if(orderState.equals("Packed")){
+				getActivity().setTitle("Orders ready to send");
+			}
+
+		}
+
+
 
 		setListAdapter(new ArrayAdapter<Order>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,

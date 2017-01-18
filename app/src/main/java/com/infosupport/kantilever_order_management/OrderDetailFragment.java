@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.infosupport.kantilever_order_management.adapters.OrderItemListAdapter;
 import com.infosupport.kantilever_order_management.content.Content;
 import com.infosupport.kantilever_order_management.domain.Order;
 
@@ -39,9 +41,6 @@ public class OrderDetailFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
-			// Load the content specified by the fragment
-			// arguments. In a real-world scenario, use a Loader
-			// to load content from a content provider.
 			mItem = Content.getOrderMap().get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
@@ -55,10 +54,13 @@ public class OrderDetailFragment extends Fragment {
 
 		// Show the content as text in a TextView.
 		if (mItem != null) {
-			// ADD CODE
 			((TextView) rootView.findViewById(R.id.id)).setText(mItem.getId());
-			((TextView) rootView.findViewById(R.id.orderDateTime)).setText(mItem.getOrderDate());
-			((TextView) rootView.findViewById(R.id.status)).setText(mItem.getStatus());
+			((TextView) rootView.findViewById(R.id.orderDateTime)).setText(mItem.getOrderTime());
+			((TextView) rootView.findViewById(R.id.status)).setText(mItem.getOrderState());
+			((TextView) rootView.findViewById(R.id.address)).setText(mItem.getShippingAddress().toString());
+			OrderItemListAdapter adapter = new OrderItemListAdapter(this.getContext());
+			adapter.addAllOrderItems(mItem.getItems());
+			((ListView) rootView.findViewById(R.id.orderItemList)).setAdapter(adapter);
 		}
 
 		return rootView;

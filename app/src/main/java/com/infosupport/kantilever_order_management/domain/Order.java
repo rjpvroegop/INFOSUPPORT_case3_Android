@@ -17,13 +17,15 @@ public class Order {
         return "Order: " + id;
     }
 
-    public Order(String id, Collection<OrderItem> items, String orderState, String orderTime, Address shippingAddress) {
+    public Order(String id, String orderState, String orderTime, Address shippingAddress, Collection<OrderItem> items) {
         this.id = id;
         this.items = items;
         this.orderState = orderState;
         this.orderTime = orderTime;
         this.shippingAddress = shippingAddress;
     }
+
+    public Order(){}
 
     public String getId() {
         return id;
