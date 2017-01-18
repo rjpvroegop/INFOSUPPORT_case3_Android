@@ -1,4 +1,4 @@
-package com.infosupport.kantilever_order_management.Adapters;
+package com.infosupport.kantilever_order_management.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

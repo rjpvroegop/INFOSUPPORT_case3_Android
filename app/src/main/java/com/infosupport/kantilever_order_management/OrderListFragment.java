@@ -25,114 +25,127 @@ import java.util.List;
 
 public class OrderListFragment extends ListFragment {
 
-    private static final String STATE_ACTIVATED_POSITION = "activated_position";
+	private static final String STATE_ACTIVATED_POSITION = "activated_position";
 
-    private Callbacks mCallbacks = sDummyCallbacks;
+	private Callbacks mCallbacks = sDummyCallbacks;
 
-    private int mActivatedPosition = ListView.INVALID_POSITION;
+	private int mActivatedPosition = ListView.INVALID_POSITION;
 
+	public static String orderState = "orderState";
+
+	public interface Callbacks {
+		/**
+		 * Callback for when an item has been selected.
+		 */
+		public void onItemSelected(String id);
+	}
     private String ALL_ORDERS_URL = "http://10.32.40.185:10007/orders/";
     private String POSTED_ORDERS_URL = "http://10.32.40.185:10007/orders/posted";
     private String PACKED_ORDERS_URL = "http://10.32.40.185:10007/orders/packed";
     private String STATUS_TO_PACKED_URL = "http://10.32.40.185:10007/orders/pack/";
     private String STATUS_TO_SENT_URL = "http://10.32.40.185:10007/orders/sent/";
 
-    public interface Callbacks {
-        /**
-         * Callback for when an item has been selected.
-         */
-        public void onItemSelected(String id);
+	private static Callbacks sDummyCallbacks = new Callbacks() {
+		@Override
+		public void onItemSelected(String id) {
+		}
+	};
 
-    }
+	public OrderListFragment() {
+	}
 
-    private static Callbacks sDummyCallbacks = new Callbacks() {
-        @Override
-        public void onItemSelected(String id) {
-        }
-    };
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if(getActivity().getIntent().getStringExtra("OrderState") != null){
+			orderState = getActivity().getIntent().getStringExtra("OrderState");
+			if(orderState.equals("Posted")){
+				getActivity().setTitle("Orders ready to pick");
+			} else if(orderState.equals("Packed")){
+				getActivity().setTitle("Orders ready to send");
+			}
 
-    public OrderListFragment() {
-    }
+		}
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        getOrders(ALL_ORDERS_URL);
-    }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+		setListAdapter(new ArrayAdapter<Order>(getActivity(),
+				android.R.layout.simple_list_item_activated_1,
+				android.R.id.text1, Content.getOrderList()));
+	}
 
-        // Restore the previously serialized activated item position.
-        if (savedInstanceState != null
-                && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
-            setActivatedPosition(savedInstanceState
-                    .getInt(STATE_ACTIVATED_POSITION));
-        }
-    }
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+		// Restore the previously serialized activated item position.
+		if (savedInstanceState != null
+				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
+			setActivatedPosition(savedInstanceState
+					.getInt(STATE_ACTIVATED_POSITION));
+		}
+	}
 
-        // Activities containing this fragment must implement its callbacks.
-        if (!(activity instanceof Callbacks)) {
-            throw new IllegalStateException(
-                    "Activity must implement fragment's callbacks.");
-        }
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
 
-        mCallbacks = (Callbacks) activity;
-    }
+		// Activities containing this fragment must implement its callbacks.
+		if (!(activity instanceof Callbacks)) {
+			throw new IllegalStateException(
+					"Activity must implement fragment's callbacks.");
+		}
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
+		mCallbacks = (Callbacks) activity;
+	}
 
-        // Reset the active callbacks interface to the dummy implementation.
-        mCallbacks = sDummyCallbacks;
-    }
+	@Override
+	public void onDetach() {
+		super.onDetach();
 
-    @Override
-    public void onListItemClick(ListView listView, View view, int position,
-                                long id) {
-        super.onListItemClick(listView, view, position, id);
+		// Reset the active callbacks interface to the dummy implementation.
+		mCallbacks = sDummyCallbacks;
+	}
 
-        // Notify the active callbacks interface (the activity, if the
-        // fragment is attached to one) that an item has been selected.
-        // ADD CODE
-        mCallbacks.onItemSelected(Content.getOrderList().get(position).getId());
+	@Override
+	public void onListItemClick(ListView listView, View view, int position,
+								long id) {
+		super.onListItemClick(listView, view, position, id);
 
-    }
+		// Notify the active callbacks interface (the activity, if the
+		// fragment is attached to one) that an item has been selected.
+		// ADD CODE
+		mCallbacks.onItemSelected(Content.getOrderList().get(position).getId());
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        if (mActivatedPosition != ListView.INVALID_POSITION) {
-            // Serialize and persist the activated item position.
-            outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
-        }
-    }
+	}
 
-    /**
-     * Turns on activate-on-click mode. When this mode is on, list items will be
-     * given the 'activated' state when touched.
-     */
-    public void setActivateOnItemClick(boolean activateOnItemClick) {
-        // When setting CHOICE_MODE_SINGLE, ListView will automatically
-        // give items the 'activated' state when touched.
-        getListView().setChoiceMode(
-                activateOnItemClick ? ListView.CHOICE_MODE_SINGLE
-                        : ListView.CHOICE_MODE_NONE);
-    }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		if (mActivatedPosition != ListView.INVALID_POSITION) {
+			// Serialize and persist the activated item position.
+			outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
+		}
+	}
 
-    private void setActivatedPosition(int position) {
-        if (position == ListView.INVALID_POSITION) {
-            getListView().setItemChecked(mActivatedPosition, false);
-        } else {
-            getListView().setItemChecked(position, true);
-        }
+	/**
+	 * Turns on activate-on-click mode. When this mode is on, list items will be
+	 * given the 'activated' state when touched.
+	 */
+	public void setActivateOnItemClick(boolean activateOnItemClick) {
+		// When setting CHOICE_MODE_SINGLE, ListView will automatically
+		// give items the 'activated' state when touched.
+		getListView().setChoiceMode(
+				activateOnItemClick ? ListView.CHOICE_MODE_SINGLE
+						: ListView.CHOICE_MODE_NONE);
+	}
+
+	private void setActivatedPosition(int position) {
+		if (position == ListView.INVALID_POSITION) {
+			getListView().setItemChecked(mActivatedPosition, false);
+		} else {
+			getListView().setItemChecked(position, true);
+		}
 
         mActivatedPosition = position;
     }
