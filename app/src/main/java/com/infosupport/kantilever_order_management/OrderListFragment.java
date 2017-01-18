@@ -57,21 +57,19 @@ public class OrderListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(getActivity().getIntent().getStringExtra("OrderState") != null){
+		if(getActivity().getIntent().getStringExtra("OrderState") != null) {
 			orderState = getActivity().getIntent().getStringExtra("OrderState");
+		}
 			if(orderState.equals("Posted")){
 				getActivity().setTitle("Orders ready to pick");
+				getOrders(POSTED_ORDERS_URL);
 			} else if(orderState.equals("Packed")){
 				getActivity().setTitle("Orders ready to send");
+				getOrders(PACKED_ORDERS_URL);
 			}
 
-		}
 
 
-
-		setListAdapter(new ArrayAdapter<Order>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, Content.getOrderList()));
 	}
 
 	@Override
