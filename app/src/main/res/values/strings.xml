@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Kantilever_order_management</string>
+    <string name="app_name">Kantilever Order Mangement</string>
+    <string name="app_name_short">Kantilever OM</string>
     <string name="title_order_detail">Order Details</string>
     <string name="title_orderlist_posted">Orders ready to pick</string>
     <string name="title_orderlist_packed">Orders ready to send</string>

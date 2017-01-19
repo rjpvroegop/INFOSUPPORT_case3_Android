@@ -4,7 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button android:layout_height="wrap_content" android:id="@+id/order_detail_state_postedButton"
-        android:text="Meld bestelling ingepakt" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent"/>
+        android:text="Report order ready to send" android:layout_width="match_parent"/>
 
 
 </LinearLayout>
