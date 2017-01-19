@@ -16,15 +16,17 @@ import java.util.Collection;
 /**
  * Created by kdomi on 17-1-2017.
  */
-class RowItem {
-    int amount;
-    String productName;
-}
-public class OrderItemListAdapter extends BaseAdapter{
+
+public class OrderItemPackedListAdapter extends BaseAdapter{
+    class RowItem {
+        int amount;
+        String productName;
+    }
+
     Context context;
     ArrayList<RowItem> rowItems = new ArrayList<RowItem>();
 
-    public OrderItemListAdapter(Context ctx) {
+    public OrderItemPackedListAdapter(Context ctx) {
         super();
         context = ctx;
     }
@@ -57,11 +59,11 @@ public class OrderItemListAdapter extends BaseAdapter{
     public View getView(int index, View view, ViewGroup viewGroup) {
         if (view == null) {
             LayoutInflater viewInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = viewInflater.inflate(R.layout.listitem_orderitemadapter, null);
+            view = viewInflater.inflate(R.layout.listitem_orderitempackedadapter, null);
         }
 
-        TextView amount = (TextView) view.findViewById(R.id.listitem_orderitemadapter_amount);
-        TextView productName = (TextView) view.findViewById(R.id.listitem_orderitemadapter_productName);
+        TextView amount = (TextView) view.findViewById(R.id.listitempacked_orderitemadapter_amount);
+        TextView productName = (TextView) view.findViewById(R.id.listitempacked_orderitemadapter_productName);
 
         RowItem rowItem = rowItems.get(index);
         amount.setText(String.valueOf(rowItem.amount));

@@ -43,7 +43,7 @@ public class RequestQueueSingleton {
     }
 
     public <T> void addToRequestQueue(Request<T> req) {
-        req.setRetryPolicy(new DefaultRetryPolicy(100, 2, 2));
+        req.setRetryPolicy(new DefaultRetryPolicy(1000, 2, 2));
         getRequestQueue().add(req);
     }
 
