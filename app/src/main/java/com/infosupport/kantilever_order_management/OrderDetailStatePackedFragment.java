@@ -28,7 +28,7 @@ import static com.infosupport.kantilever_order_management.OrderDetailFragment.AR
 
 public class OrderDetailStatePackedFragment extends Fragment {
 
-    private String STATUS_TO_SENT_URL = "http://192.168.2.48:10007/orders/sent/";
+    private String STATUS_TO_SENT_URL = "http://10.32.41.111:10007/orders/sent/";
     String id = "id";
     public OrderDetailStatePackedFragment(){}
 
