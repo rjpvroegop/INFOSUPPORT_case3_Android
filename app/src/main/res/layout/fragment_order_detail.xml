@@ -46,7 +46,7 @@
                     android:id="@+id/orderDateTimeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Besteld op:"
+                    android:text="Orderdate:"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold" />
 
@@ -69,7 +69,7 @@
                     android:id="@+id/statusLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Status:"
+                    android:text="State:"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Adres:"
+                    android:text="Address:"
                     android:textStyle="bold" />
 
                 <TextView
@@ -110,7 +110,7 @@
                 android:id="@+id/orderItemHeaderContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
-                <TextView android:text="Aantal"  android:id="@+id/listitem_orderitemadapter_amount_header" android:textAppearance="?android:attr/textAppearanceMedium"
+                <TextView android:text="Amount"  android:id="@+id/listitem_orderitemadapter_amount_header" android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" />
                 <TextView android:text="Product"  android:id="@+id/listitem_orderitemadapter_productName_header" android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold"/>

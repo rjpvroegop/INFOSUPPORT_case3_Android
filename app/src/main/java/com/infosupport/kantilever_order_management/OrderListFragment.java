@@ -39,11 +39,11 @@ public class OrderListFragment extends ListFragment {
 		 */
 		public void onItemSelected(String id);
 	}
-    private String ALL_ORDERS_URL = "http://10.32.40.185:10007/orders/";
-    private String POSTED_ORDERS_URL = "http://10.32.40.185:10007/orders/posted";
-    private String PACKED_ORDERS_URL = "http://10.32.40.185:10007/orders/packed";
-    private String STATUS_TO_PACKED_URL = "http://10.32.40.185:10007/orders/pack/";
-    private String STATUS_TO_SENT_URL = "http://10.32.40.185:10007/orders/sent/";
+    private String ALL_ORDERS_URL = "http://192.168.2.48:10007/orders/";
+    private String POSTED_ORDERS_URL = "http://192.168.2.48:10007/orders/posted";
+    private String PACKED_ORDERS_URL = "http://192.168.2.48:10007/orders/packed";
+    private String STATUS_TO_PACKED_URL = "http://192.168.2.48:10007/orders/pack/";
+    private String STATUS_TO_SENT_URL = "http://192.168.2.48:10007/orders/sent/";
 
 	private static Callbacks sDummyCallbacks = new Callbacks() {
 		@Override
