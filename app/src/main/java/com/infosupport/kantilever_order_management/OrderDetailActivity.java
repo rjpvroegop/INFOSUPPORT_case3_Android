@@ -43,10 +43,16 @@ public class OrderDetailActivity extends FragmentActivity {
 			getSupportFragmentManager().beginTransaction().
 					add(R.id.order_detail_container, fragment).commit();
 			//knoppen op basis van status
+			Bundle argumentsUpdateId = new Bundle();
+			argumentsUpdateId.putString("id", getIntent().getStringExtra(ARG_ITEM_ID));
 			if(Content.getOrderMap().get(getIntent().getStringExtra(ARG_ITEM_ID)).getOrderState().equals("Posted")){
-				getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, new OrderDetailStatePostedFragment()).commit();
+				OrderDetailStatePostedFragment postedFragment = new OrderDetailStatePostedFragment();
+				postedFragment.setArguments(argumentsUpdateId);
+				getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, postedFragment).commit();
 			} else {
-				getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, new OrderDetailStatePackedFragment()).commit();
+				OrderDetailStatePackedFragment packedFragment = new OrderDetailStatePackedFragment();
+				packedFragment.setArguments(argumentsUpdateId);
+				getSupportFragmentManager().beginTransaction().replace(R.id.order_detail_buttonsContainer, packedFragment).commit();
 			}
 		}
 	}

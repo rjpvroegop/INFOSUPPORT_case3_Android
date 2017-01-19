@@ -5,126 +5,138 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/idContainer"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/idLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Id:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/id"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textIsSelectable="true"
-            tools:context=".OrderDetailFragment" />
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/orderDateTimeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/orderDateTimeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Besteld op:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/idContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/orderDateTime"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textIsSelectable="true"
-            tools:context=".OrderDetailFragment" />
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/statusContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/idLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Id:"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/statusLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Status:"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/id"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textIsSelectable="true"
+                    tools:context=".OrderDetailFragment" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/status"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textIsSelectable="true"
-            tools:context=".OrderDetailFragment" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/orderDateTimeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:id="@+id/addressContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/orderDateTimeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Orderdate:"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/addressLabel"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adres:"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/orderDateTime"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textIsSelectable="true"
+                    tools:context=".OrderDetailFragment" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/address"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textIsSelectable="true"
-            tools:context=".OrderDetailFragment" />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/statusContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:id="@+id/orderItemHeaderContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <TextView android:text="Aantal"  android:id="@+id/listitem_orderitemadapter_amount_header" android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" />
-        <TextView android:text="Product"  android:id="@+id/listitem_orderitemadapter_productName_header" android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold"/>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/statusLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="State:"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/orderItemContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+                <TextView
+                    android:id="@+id/status"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textIsSelectable="true"
+                    tools:context=".OrderDetailFragment" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/addressContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/addressLabel"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textIsSelectable="true"
+                    tools:context=".OrderDetailFragment" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/orderItemHeaderContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView android:text="Amount"  android:id="@+id/listitem_orderitemadapter_amount_header" android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" />
+                <TextView android:text="Product"  android:id="@+id/listitem_orderitemadapter_productName_header" android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="fill_parent" android:layout_weight="1" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/orderItemContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
 
-        <ListView
-            android:id="@+id/orderItemList"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <ListView
+                    android:id="@+id/orderItemList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/order_detail_buttonsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/order_detail_buttonsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </LinearLayout>
