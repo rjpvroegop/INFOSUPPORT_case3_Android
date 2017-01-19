@@ -26,14 +26,15 @@ import static com.infosupport.kantilever_order_management.OrderDetailFragment.AR
 
 public class OrderDetailStatePostedFragment extends Fragment {
 
-    private String STATUS_TO_PACKED_URL = "http://10.32.41.111:10007/orders/pack/";
-    String id = "id";
-    public OrderDetailStatePostedFragment(){}
+    private String id = "id";
+
+    public OrderDetailStatePostedFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments().containsKey("id")){
+        if (getArguments().containsKey("id")) {
             id = getArguments().getString("id");
         }
     }
@@ -47,33 +48,11 @@ public class OrderDetailStatePostedFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 //Verander status naar "Finished" (REST call)
-                setOrderToStatus(STATUS_TO_PACKED_URL, id);
+                RequestQueueSingleton.getInstance(getActivity().getApplicationContext())
+                        .setOrderToStatus(RequestQueueSingleton.STATUS_TO_PACKED_URL, id, getActivity());
 
             }
         });
-
         return rootView;
-    }
-
-    private void setOrderToStatus(String url, final String orderId) {
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        url += orderId;
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Intent i = new Intent(getActivity(), OrderListActivity.class);
-                startActivity(i);
-                Toast.makeText(getActivity().getApplicationContext(), "Status change: Success", Toast.LENGTH_SHORT).show();
-                Log.v("OrderPacked", orderId + "successfull!");
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity().getApplicationContext(), "Status change: Failed", Toast.LENGTH_SHORT).show();
-                Log.v("setOrderPacked",  orderId + "failed!!");
-
-            }
-        });
-        requestQueue.add(request);
     }
 }
