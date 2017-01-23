@@ -47,7 +47,7 @@ public class RequestQueueSingleton {
         getRequestQueue().add(req);
     }
 
-    public static String BASE_URL = "http://10.32.41.111:10007/";
+    public static String BASE_URL = "http://10.32.41.108:10007/";
     public static String ALL_ORDERS_URL = BASE_URL + "orders/";
     public static String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
     public static String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
