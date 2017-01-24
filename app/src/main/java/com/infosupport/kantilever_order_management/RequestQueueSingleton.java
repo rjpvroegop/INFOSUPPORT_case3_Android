@@ -54,30 +54,6 @@ public class RequestQueueSingleton {
     public static String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
     public static String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
 
-//    private void getOrders(String url, final Activity activity) {
-//        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray jsonArray) {
-//                List<Order> mOrders = JSONParser.parseOrdersJsonArray(jsonArray);
-//                Content.clearOrders();
-//                for (Order order : mOrders) {
-//                    Content.addOrder(order);
-//                }
-//                activity.setL
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.v("getOrders", String.valueOf(error));
-//                Toast.makeText(ctx, "Could not connect to the server!", Toast.LENGTH_SHORT).show();
-//                setListAdapter(new ArrayAdapter<>(ctx,
-//                        android.R.layout.simple_list_item_activated_1,
-//                        android.R.id.text1, new ArrayList<>()));
-//            }
-//        });
-//        mInstance.addToRequestQueue(request);
-//    }
-
     public void setOrderToStatus(String url, final String orderId, final Activity activity) {
         url += orderId;
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

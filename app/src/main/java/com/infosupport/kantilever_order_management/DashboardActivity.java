@@ -29,7 +29,7 @@ public class DashboardActivity extends Activity {
         Button packedOrdersButton = (Button) findViewById(R.id.packed_orders_button);
         packedOrdersButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                //Code to launch internal activity
+
                 Intent i = new Intent(DashboardActivity.this, OrderListActivity.class);
                 i.putExtra("OrderState", "Packed");
                 startActivity(i);
