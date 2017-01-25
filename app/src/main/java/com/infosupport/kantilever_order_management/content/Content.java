@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by kdomi on 17-1-2017.
  */
 
-public class Content {
+public final class Content {
 
     //List van orders
     private static List<Order> orders = new ArrayList<>();
@@ -19,7 +19,7 @@ public class Content {
     //Map van orders op id
     private static Map<String, Order> orderMap = new HashMap<>();
 
-    private Content(){
+    private Content() {
 
     }
 

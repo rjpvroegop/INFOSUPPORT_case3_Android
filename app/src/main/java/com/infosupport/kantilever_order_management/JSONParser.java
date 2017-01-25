@@ -19,11 +19,11 @@ import java.util.logging.Logger;
  * Created by maart on 18-1-2017.
  */
 
-public class JSONParser {
+public final class JSONParser {
 
     private static Logger LOGGER = Logger.getLogger("JSONParser");
 
-    private JSONParser(){
+    private JSONParser() {
 
     }
 

@@ -22,6 +22,14 @@ public final class RequestQueueSingleton {
     private static RequestQueueSingleton mInstance;
     private RequestQueue requestQueue;
     private static Context ctx;
+
+    public static final String BASE_URL = "http://10.32.40.39:10001/bsbestellingenbeheer/";
+    public static final String ALL_ORDERS_URL = BASE_URL + "orders/";
+    public static final String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
+    public static final String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
+    public static final String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
+    public static final String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
+
     private final int retryMs = 1000;
 
     private RequestQueueSingleton(Context context) {
@@ -47,13 +55,6 @@ public final class RequestQueueSingleton {
         req.setRetryPolicy(new DefaultRetryPolicy(retryMs, 2, 2));
         getRequestQueue().add(req);
     }
-
-    public static final String BASE_URL = "http://10.32.40.39:10001/bsbestellingenbeheer/";
-    public static final String ALL_ORDERS_URL = BASE_URL + "orders/";
-    public static final String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
-    public static final String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
-    public static final String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
-    public static final String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
 
     public void setOrderToStatus(String url, final String orderId, final Activity activity) {
         String finalUrl = url + orderId;
