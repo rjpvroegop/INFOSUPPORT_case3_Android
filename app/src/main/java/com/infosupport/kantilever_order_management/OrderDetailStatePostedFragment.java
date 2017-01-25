@@ -1,7 +1,7 @@
 package com.infosupport.kantilever_order_management;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +21,7 @@ public class OrderDetailStatePostedFragment extends Fragment {
 
     private String id = "id";
     private Order activeOrder;
+
     public OrderDetailStatePostedFragment() {
     }
 
@@ -30,7 +31,7 @@ public class OrderDetailStatePostedFragment extends Fragment {
         if (getArguments().containsKey("id")) {
             id = getArguments().getString("id");
         }
-        if (!id.equals("id")){
+        if (!id.equals("id")) {
             activeOrder = Content.getOrderMap().get(id);
         }
     }

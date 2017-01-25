@@ -17,22 +17,22 @@ import java.util.Collection;
  * Created by kdomi on 17-1-2017.
  */
 
-public class OrderItemPackedListAdapter extends BaseAdapter{
+public class OrderItemPackedListAdapter extends BaseAdapter {
     class RowItem {
         int amount;
         String productName;
     }
 
-    Context context;
-    ArrayList<RowItem> rowItems = new ArrayList<RowItem>();
+    private Context context;
+    private ArrayList<RowItem> rowItems = new ArrayList<>();
 
     public OrderItemPackedListAdapter(Context ctx) {
         super();
         context = ctx;
     }
 
-    public void addAllOrderItems(Collection<OrderItem> orderItemsToAdd){
-        for(OrderItem orderItem : orderItemsToAdd){
+    public void addAllOrderItems(Collection<OrderItem> orderItemsToAdd) {
+        for (OrderItem orderItem : orderItemsToAdd) {
             RowItem rowItem = new RowItem();
             rowItem.amount = orderItem.getAmount();
             rowItem.productName = orderItem.getProduct().getName();

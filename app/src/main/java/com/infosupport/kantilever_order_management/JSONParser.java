@@ -74,7 +74,7 @@ public class JSONParser {
                 String orderTime = jsonObject.getString("orderTime");
 
                 Address address = parseAddress(jsonObject.getJSONObject("shippingAddress"));
-                Collection<OrderItem> orderItems = parseOrderItems(jsonObject.getJSONArray("items"));
+                Collection<OrderItem> orderItems = parseOrderItems(jsonObject.getJSONArray("orderitems"));
 
                 Order order = new Order();
                 order.setId(id);

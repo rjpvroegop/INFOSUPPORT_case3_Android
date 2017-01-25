@@ -13,7 +13,7 @@ public class Order {
     private Collection<OrderItem> items;
 
     @Override
-    public String toString(){
+    public String toString() {
         return bsKey;
     }
 
@@ -26,7 +26,8 @@ public class Order {
         this.shippingAddress = shippingAddress;
     }
 
-    public Order(){}
+    public Order() {
+    }
 
     public String getId() {
         return id;
@@ -36,9 +37,13 @@ public class Order {
         this.id = id;
     }
 
-    public String getBsKey() { return bsKey; }
+    public String getBsKey() {
+        return bsKey;
+    }
 
-    public void setBsKey(String bsKey) { this.bsKey = bsKey; }
+    public void setBsKey(String bsKey) {
+        this.bsKey = bsKey;
+    }
 
     public Collection<OrderItem> getItems() {
         return items;

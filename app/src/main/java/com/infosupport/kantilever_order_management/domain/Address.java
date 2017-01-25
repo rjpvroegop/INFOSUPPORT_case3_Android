@@ -13,7 +13,7 @@ public class Address {
         this.zip = zip;
     }
 
-    public String toString(){
+    public String toString() {
         return city + ", " + street + ", " + zip;
     }
 
