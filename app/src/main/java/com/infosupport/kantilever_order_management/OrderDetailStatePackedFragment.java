@@ -44,7 +44,7 @@ public class OrderDetailStatePackedFragment extends Fragment {
         ((ListView) rootView.findViewById(R.id.orderItemPackedList)).setAdapter(adapter);
 
 
-        Button button = ((Button) rootView.findViewById(R.id.order_detail_state_packedButton));
+        Button button = (Button) rootView.findViewById(R.id.order_detail_state_packedButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 //Verander status naar "Finished" (REST call)

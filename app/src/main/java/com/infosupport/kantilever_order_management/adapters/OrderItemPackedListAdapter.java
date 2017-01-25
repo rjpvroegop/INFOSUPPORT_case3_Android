@@ -19,8 +19,8 @@ import java.util.Collection;
 
 public class OrderItemPackedListAdapter extends BaseAdapter {
     class RowItem {
-        int amount;
-        String productName;
+        private int amount;
+        private String productName;
     }
 
     private Context context;

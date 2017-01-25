@@ -23,12 +23,12 @@ public class JSONParser {
 
     private static Logger LOGGER = Logger.getLogger("JSONParser");
 
-    private static Address parseAddress(JSONObject JSONAddress) {
+    private static Address parseAddress(JSONObject jsonAddress) {
         try {
             return new Address(
-                    JSONAddress.getString("city"),
-                    JSONAddress.getString("street"),
-                    JSONAddress.getString("zip"));
+                    jsonAddress.getString("city"),
+                    jsonAddress.getString("street"),
+                    jsonAddress.getString("zip"));
         } catch (JSONException e) {
             LOGGER.log(Level.SEVERE, "parseAddress", e);
         }

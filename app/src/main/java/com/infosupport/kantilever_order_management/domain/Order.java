@@ -17,7 +17,8 @@ public class Order {
         return bsKey;
     }
 
-    public Order(String id, String bsKey, String orderState, String orderTime, Address shippingAddress, Collection<OrderItem> items) {
+    public Order(String id, String bsKey, String orderState, String orderTime,
+                 Address shippingAddress, Collection<OrderItem> items) {
         this.id = id;
         this.bsKey = bsKey;
         this.items = items;

@@ -18,10 +18,11 @@ import com.android.volley.toolbox.Volley;
  * Created by maart on 19-1-2017.
  */
 
-public class RequestQueueSingleton {
+public final class RequestQueueSingleton {
     private static RequestQueueSingleton mInstance;
     private RequestQueue requestQueue;
     private static Context ctx;
+    private final int retryMs = 1000;
 
     private RequestQueueSingleton(Context context) {
         ctx = context;
@@ -43,16 +44,16 @@ public class RequestQueueSingleton {
     }
 
     public <T> void addToRequestQueue(Request<T> req) {
-        req.setRetryPolicy(new DefaultRetryPolicy(1000, 2, 2));
+        req.setRetryPolicy(new DefaultRetryPolicy(retryMs, 2, 2));
         getRequestQueue().add(req);
     }
 
-    public static String BASE_URL = "http://10.32.43.149:10001/bsbestellingenbeheer/";
-    public static String ALL_ORDERS_URL = BASE_URL + "orders/";
-    public static String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
-    public static String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
-    public static String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
-    public static String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
+    public final static String BASE_URL = "http://10.32.43.149:10001/bsbestellingenbeheer/";
+    public final static String ALL_ORDERS_URL = BASE_URL + "orders/";
+    public final static String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
+    public final static String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
+    public final static String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
+    public final static String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
 
     public void setOrderToStatus(String url, final String orderId, final Activity activity) {
         url += orderId;

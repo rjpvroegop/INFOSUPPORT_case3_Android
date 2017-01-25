@@ -145,6 +145,8 @@ public class OrderListFragment extends ListFragment {
                         android.R.id.text1, new ArrayList<>()));
             }
         });
-        RequestQueueSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(request);
+        RequestQueueSingleton
+                .getInstance(getActivity().getApplicationContext())
+                .addToRequestQueue(request);
     }
 }
