@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.infosupport.kantilever_order_management.OrderListFragment.orderState;
+
 /**
  * Created by maart on 18-1-2017.
  */
@@ -70,6 +72,7 @@ public class JSONParser {
             try {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String id = jsonObject.getString("id");
+                String bsKey = jsonObject.getString("bsKey");
                 String orderState = jsonObject.getString("orderState");
                 String orderTime = jsonObject.getString("orderTime");
 
@@ -78,6 +81,7 @@ public class JSONParser {
 
                 Order order = new Order();
                 order.setId(id);
+                order.setBsKey(bsKey);
                 order.setOrderState(orderState);
                 order.setOrderTime(orderTime);
                 order.setItems(orderItems);

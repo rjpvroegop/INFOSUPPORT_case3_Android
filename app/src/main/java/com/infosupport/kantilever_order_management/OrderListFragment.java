@@ -36,17 +36,9 @@ public class OrderListFragment extends ListFragment {
     public static String orderState = "orderState";
 
     public interface Callbacks {
-        /**
-         * Callback for when an item has been selected.
-         */
         public void onItemSelected(String id);
     }
 
-    private String ALL_ORDERS_URL = "http://10.32.41.111:10007/orders/";
-    private String POSTED_ORDERS_URL = "http://10.32.41.111:10007/orders/posted";
-    private String PACKED_ORDERS_URL = "http://10.32.41.111:10007/orders/packed";
-    private String STATUS_TO_PACKED_URL = "http://10.32.41.111:10007/orders/pack/";
-    private String STATUS_TO_SENT_URL = "http://10.32.41.111:10007/orders/sent/";
 
     private static Callbacks sDummyCallbacks = new Callbacks() {
         @Override
@@ -75,8 +67,6 @@ public class OrderListFragment extends ListFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // Restore the previously serialized activated item position.
         if (savedInstanceState != null
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState
@@ -87,8 +77,6 @@ public class OrderListFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-
-        // Activities containing this fragment must implement its callbacks.
         if (!(activity instanceof Callbacks)) {
             throw new IllegalStateException(
                     "Activity must implement fragment's callbacks.");
@@ -101,7 +89,6 @@ public class OrderListFragment extends ListFragment {
     public void onDetach() {
         super.onDetach();
 
-        // Reset the active callbacks interface to the dummy implementation.
         mCallbacks = sDummyCallbacks;
     }
 
@@ -109,10 +96,6 @@ public class OrderListFragment extends ListFragment {
     public void onListItemClick(ListView listView, View view, int position,
                                 long id) {
         super.onListItemClick(listView, view, position, id);
-
-        // Notify the active callbacks interface (the activity, if the
-        // fragment is attached to one) that an item has been selected.
-        // ADD CODE
         mCallbacks.onItemSelected(Content.getOrderList().get(position).getId());
 
     }
@@ -126,13 +109,7 @@ public class OrderListFragment extends ListFragment {
         }
     }
 
-    /**
-     * Turns on activate-on-click mode. When this mode is on, list items will be
-     * given the 'activated' state when touched.
-     */
     public void setActivateOnItemClick(boolean activateOnItemClick) {
-        // When setting CHOICE_MODE_SINGLE, ListView will automatically
-        // give items the 'activated' state when touched.
         getListView().setChoiceMode(
                 activateOnItemClick ? ListView.CHOICE_MODE_SINGLE
                         : ListView.CHOICE_MODE_NONE);

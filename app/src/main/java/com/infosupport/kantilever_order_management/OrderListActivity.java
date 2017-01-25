@@ -19,7 +19,6 @@ public class OrderListActivity extends FragmentActivity implements
 		setContentView(R.layout.activity_order_list);
 
 
-		//als het een tabletscherm betreft two pane layout
 		if (findViewById(R.id.order_detail_container) != null) {
 			mTwoPane = true;
 			((OrderListFragment) getSupportFragmentManager().findFragmentById(R.id.order_list)).setActivateOnItemClick(true);
@@ -51,9 +50,6 @@ public class OrderListActivity extends FragmentActivity implements
 			}
 
 		} else {
-			// In single-pane mode, simply start the detail activity
-			// for the selected item ID.
-			// ADD CODE
 			Intent detailIntent = new Intent(this, OrderDetailActivity.class);
 			detailIntent.putExtra(ARG_ITEM_ID, id);
 			startActivity(detailIntent);
