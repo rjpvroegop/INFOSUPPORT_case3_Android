@@ -1,7 +1,5 @@
 package com.infosupport.kantilever_order_management;
 
-import android.util.Log;
-
 import com.infosupport.kantilever_order_management.domain.Address;
 import com.infosupport.kantilever_order_management.domain.Order;
 import com.infosupport.kantilever_order_management.domain.OrderItem;
@@ -14,8 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import static com.infosupport.kantilever_order_management.OrderListFragment.orderState;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by maart on 18-1-2017.
@@ -23,46 +21,45 @@ import static com.infosupport.kantilever_order_management.OrderListFragment.orde
 
 public class JSONParser {
 
-    private static Address parseAddress(JSONObject JSONAddress){
-        Address address = null;
-        try{
-            address = new Address(
+    private static Logger LOGGER = Logger.getLogger("JSONParser");
+
+    private static Address parseAddress(JSONObject JSONAddress) {
+        try {
+            return new Address(
                     JSONAddress.getString("city"),
                     JSONAddress.getString("street"),
                     JSONAddress.getString("zip"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "parseAddress", e);
         }
-        return address;
+        return null;
     }
 
-    private static List<OrderItem> parseOrderItems(JSONArray jsonArray){
+    private static List<OrderItem> parseOrderItems(JSONArray jsonArray) {
         List<OrderItem> orderItems = new ArrayList<>();
-        for(int i = 0; i < jsonArray.length(); i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             try {
-                OrderItem orderItem = null;
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                int amount = jsonObject.getInt("amount");
-                Product product = parseProduct(jsonObject.getJSONObject("product"));
+                JSONObject orderItem = jsonArray.getJSONObject(i);
+                int amount = orderItem.getInt("amount");
+                Product product = parseProduct(orderItem.getJSONObject("product"));
 
                 orderItems.add(new OrderItem(amount, product));
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (JSONException e) {
+                LOGGER.log(Level.SEVERE, "parseOrderItems", e);
             }
         }
         return orderItems;
     }
 
-    private static Product parseProduct(JSONObject jsonProduct){
-        Product product = null;
-        try{
-            product = new Product(
+    private static Product parseProduct(JSONObject jsonProduct) {
+        try {
+            return new Product(
                     jsonProduct.getLong("id"),
                     jsonProduct.getString("name"));
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (JSONException e) {
+            LOGGER.log(Level.SEVERE, "jsonProduct", e);
         }
-        return product;
+        return null;
     }
 
 
@@ -87,8 +84,8 @@ public class JSONParser {
                 order.setItems(orderItems);
                 order.setShippingAddress(address);
                 orders.add(order);
-            } catch (Exception e) {
-                Log.e("parsing", e.toString());
+            } catch (JSONException e) {
+                LOGGER.log(Level.SEVERE, "parseOrdersJsonArray", e);
             }
         }
         return orders;
