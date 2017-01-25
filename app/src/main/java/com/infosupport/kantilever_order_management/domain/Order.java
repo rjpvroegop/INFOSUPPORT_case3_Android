@@ -8,14 +8,12 @@ import java.util.Collection;
  */
 
 public class Order {
-    private String id, bsKey, orderTime, orderState;
+    private String id;
+    private String bsKey;
+    private String orderTime;
+    private String orderState;
     private Address shippingAddress;
     private Collection<OrderItem> items;
-
-    @Override
-    public String toString() {
-        return bsKey;
-    }
 
     public Order(String id, String bsKey, String orderState, String orderTime,
                  Address shippingAddress, Collection<OrderItem> items) {
@@ -28,6 +26,11 @@ public class Order {
     }
 
     public Order() {
+    }
+
+    @Override
+    public String toString() {
+        return bsKey;
     }
 
     public String getId() {

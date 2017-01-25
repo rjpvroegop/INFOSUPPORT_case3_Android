@@ -48,16 +48,16 @@ public final class RequestQueueSingleton {
         getRequestQueue().add(req);
     }
 
-    public final static String BASE_URL = "http://10.32.43.149:10001/bsbestellingenbeheer/";
-    public final static String ALL_ORDERS_URL = BASE_URL + "orders/";
-    public final static String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
-    public final static String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
-    public final static String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
-    public final static String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
+    public static final String BASE_URL = "http://10.32.40.39:10001/bsbestellingenbeheer/";
+    public static final String ALL_ORDERS_URL = BASE_URL + "orders/";
+    public static final String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
+    public static final String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
+    public static final String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
+    public static final String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
 
     public void setOrderToStatus(String url, final String orderId, final Activity activity) {
-        url += orderId;
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        String finalUrl = url + orderId;
+        StringRequest request = new StringRequest(Request.Method.POST, finalUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Intent i = new Intent(activity, OrderListActivity.class);

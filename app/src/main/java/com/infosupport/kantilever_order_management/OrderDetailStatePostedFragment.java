@@ -45,7 +45,7 @@ public class OrderDetailStatePostedFragment extends Fragment {
         ((ListView) rootView.findViewById(R.id.orderItemPostedList)).setAdapter(adapter);
 
 
-        Button button = ((Button) rootView.findViewById(R.id.order_detail_state_postedButton));
+        Button button = (Button) rootView.findViewById(R.id.order_detail_state_postedButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 //Verander status naar "Finished" (REST call)

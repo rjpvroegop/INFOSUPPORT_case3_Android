@@ -15,8 +15,13 @@ public class Content {
 
     //List van orders
     private static List<Order> orders = new ArrayList<>();
+
     //Map van orders op id
     private static Map<String, Order> orderMap = new HashMap<>();
+
+    private Content(){
+
+    }
 
     public static void clearOrders() {
         orders = new ArrayList<>();

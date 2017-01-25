@@ -23,6 +23,10 @@ public class JSONParser {
 
     private static Logger LOGGER = Logger.getLogger("JSONParser");
 
+    private JSONParser(){
+
+    }
+
     private static Address parseAddress(JSONObject jsonAddress) {
         try {
             return new Address(

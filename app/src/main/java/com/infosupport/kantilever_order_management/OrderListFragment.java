@@ -30,7 +30,7 @@ public class OrderListFragment extends ListFragment {
 
     private int mActivatedPosition = ListView.INVALID_POSITION;
 
-    public static String orderState = "orderState";
+    private static String orderState = "orderState";
 
     public interface Callbacks {
         void onItemSelected(String id);
@@ -139,7 +139,8 @@ public class OrderListFragment extends ListFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.v("getOrders", String.valueOf(error));
-                Toast.makeText(getActivity().getApplicationContext(), "Could not connect to the server!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Could not connect to the server!", Toast.LENGTH_SHORT).show();
                 setListAdapter(new ArrayAdapter<>(getActivity(),
                         android.R.layout.simple_list_item_activated_1,
                         android.R.id.text1, new ArrayList<>()));
