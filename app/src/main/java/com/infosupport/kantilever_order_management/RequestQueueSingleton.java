@@ -23,7 +23,7 @@ public final class RequestQueueSingleton {
     private RequestQueue requestQueue;
     private static Context ctx;
 
-    public static final String BASE_URL = "http://10.32.40.39:10001/bsbestellingenbeheer/";
+    public static final String BASE_URL = "http://10.32.40.194:10001/bsbestellingenbeheer/";
     public static final String ALL_ORDERS_URL = BASE_URL + "orders/";
     public static final String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
     public static final String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
