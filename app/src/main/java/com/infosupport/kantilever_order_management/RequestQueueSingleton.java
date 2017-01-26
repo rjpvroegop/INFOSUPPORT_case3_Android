@@ -18,17 +18,26 @@ import com.android.volley.toolbox.Volley;
  * Created by maart on 19-1-2017.
  */
 
-public class RequestQueueSingleton {
+public final class RequestQueueSingleton {
     private static RequestQueueSingleton mInstance;
     private RequestQueue requestQueue;
     private static Context ctx;
+
+    public static final String BASE_URL = "http://10.32.40.194:10001/bsbestellingenbeheer/";
+    public static final String ALL_ORDERS_URL = BASE_URL + "orders/";
+    public static final String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
+    public static final String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
+    public static final String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
+    public static final String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
+
+    private final int retryMs = 1000;
 
     private RequestQueueSingleton(Context context) {
         ctx = context;
         requestQueue = getRequestQueue();
     }
 
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
         }
@@ -43,20 +52,13 @@ public class RequestQueueSingleton {
     }
 
     public <T> void addToRequestQueue(Request<T> req) {
-        req.setRetryPolicy(new DefaultRetryPolicy(1000, 2, 2));
+        req.setRetryPolicy(new DefaultRetryPolicy(retryMs, 2, 2));
         getRequestQueue().add(req);
     }
 
-    public static String BASE_URL = "http://10.32.41.108:10007/";
-    public static String ALL_ORDERS_URL = BASE_URL + "orders/";
-    public static String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
-    public static String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
-    public static String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
-    public static String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
-
     public void setOrderToStatus(String url, final String orderId, final Activity activity) {
-        url += orderId;
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        String finalUrl = url + orderId;
+        StringRequest request = new StringRequest(Request.Method.POST, finalUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Intent i = new Intent(activity, OrderListActivity.class);

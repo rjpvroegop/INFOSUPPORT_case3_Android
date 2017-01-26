@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/order_detail_state_postedLayout"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/orderItemHeaderContainer"
         android:layout_width="match_parent"
@@ -63,8 +65,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <Button android:layout_height="wrap_content" android:id="@+id/order_detail_state_postedButton"
-        android:text="Report order ready to send" android:layout_width="match_parent"
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/order_detail_state_postedButton"
+        android:text="Report order ready to send"
+        android:layout_width="match_parent"
         android:enabled="false" />
 
 

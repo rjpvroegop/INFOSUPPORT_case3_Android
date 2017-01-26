@@ -21,6 +21,7 @@ public class OrderDetailStatePackedFragment extends Fragment {
 
     private String id = "id";
     private Order activeOrder;
+
     public OrderDetailStatePackedFragment() {
     }
 
@@ -28,7 +29,7 @@ public class OrderDetailStatePackedFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         id = getArguments().getString("id");
-        if (!id.equals("id")){
+        if (!id.equals("id")) {
             activeOrder = Content.getOrderMap().get(id);
         }
 
@@ -43,9 +44,7 @@ public class OrderDetailStatePackedFragment extends Fragment {
         ((ListView) rootView.findViewById(R.id.orderItemPackedList)).setAdapter(adapter);
 
 
-
-
-        Button button = ((Button) rootView.findViewById(R.id.order_detail_state_packedButton));
+        Button button = (Button) rootView.findViewById(R.id.order_detail_state_packedButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 //Verander status naar "Finished" (REST call)

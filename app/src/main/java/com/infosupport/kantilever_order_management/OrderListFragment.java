@@ -10,12 +10,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.infosupport.kantilever_order_management.content.Content;
 import com.infosupport.kantilever_order_management.domain.Order;
 
@@ -33,10 +30,10 @@ public class OrderListFragment extends ListFragment {
 
     private int mActivatedPosition = ListView.INVALID_POSITION;
 
-    public static String orderState = "orderState";
+    private static String orderState = "orderState";
 
     public interface Callbacks {
-        public void onItemSelected(String id);
+        void onItemSelected(String id);
     }
 
 
@@ -142,12 +139,15 @@ public class OrderListFragment extends ListFragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.v("getOrders", String.valueOf(error));
-                Toast.makeText(getActivity().getApplicationContext(), "Could not connect to the server!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Could not connect to the server!", Toast.LENGTH_SHORT).show();
                 setListAdapter(new ArrayAdapter<>(getActivity(),
                         android.R.layout.simple_list_item_activated_1,
                         android.R.id.text1, new ArrayList<>()));
             }
         });
-        RequestQueueSingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(request);
+        RequestQueueSingleton
+                .getInstance(getActivity().getApplicationContext())
+                .addToRequestQueue(request);
     }
 }

@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.infosupport.kantilever_order_management.R;
 import com.infosupport.kantilever_order_management.domain.OrderItem;
@@ -21,13 +20,14 @@ import java.util.Collection;
  * Created by kdomi on 17-1-2017.
  */
 
-public class OrderItemPostedListAdapter extends BaseAdapter{
+public class OrderItemPostedListAdapter extends BaseAdapter {
     class RowItem {
-        int amount;
-        String productName;
+        private int amount;
+        private String productName;
     }
-    Context context;
-    ArrayList<RowItem> rowItems = new ArrayList<RowItem>();
+
+    private Context context;
+    private ArrayList<RowItem> rowItems = new ArrayList<>();
     private int countChecked = 0;
 
     public OrderItemPostedListAdapter(Context ctx) {
@@ -35,8 +35,8 @@ public class OrderItemPostedListAdapter extends BaseAdapter{
         context = ctx;
     }
 
-    public void addAllOrderItems(Collection<OrderItem> orderItemsToAdd){
-        for(OrderItem orderItem : orderItemsToAdd){
+    public void addAllOrderItems(Collection<OrderItem> orderItemsToAdd) {
+        for (OrderItem orderItem : orderItemsToAdd) {
             RowItem rowItem = new RowItem();
             rowItem.amount = orderItem.getAmount();
             rowItem.productName = orderItem.getProduct().getName();
@@ -73,15 +73,15 @@ public class OrderItemPostedListAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 Button postedButton = (Button) view.getRootView().findViewById(R.id.order_detail_state_postedButton);
-                if(checkBox.isChecked()){
+                if (checkBox.isChecked()) {
                     countChecked++;
                     Log.v("Click", "Enable");
-                    if(getCount() == countChecked){
+                    if (getCount() == countChecked) {
                         postedButton.setEnabled(true);
                     }
                 } else {
                     countChecked--;
-                    if(getCount() != countChecked){
+                    if (getCount() != countChecked) {
                         postedButton.setEnabled(false);
                     }
                     Log.v("Click", "Disable");
