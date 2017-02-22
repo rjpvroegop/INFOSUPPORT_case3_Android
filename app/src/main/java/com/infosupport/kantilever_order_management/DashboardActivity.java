@@ -29,7 +29,7 @@ public class DashboardActivity extends Activity {
         Button packedOrdersButton = (Button) findViewById(R.id.packed_orders_button);
         packedOrdersButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
+                //Code to launch internal activity
                 Intent i = new Intent(DashboardActivity.this, OrderListActivity.class);
                 i.putExtra("OrderState", "Packed");
                 startActivity(i);
@@ -41,7 +41,7 @@ public class DashboardActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
+        if(resultCode == RESULT_OK) {
             Boolean val = data.getBooleanExtra("user_accepted", false);
 
             Log.v("Result", "User accepted: " + val);

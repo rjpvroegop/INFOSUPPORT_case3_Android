@@ -8,30 +8,24 @@ import java.util.Collection;
  */
 
 public class Order {
-    private String id;
-    private String bsKey;
-    private String orderTime;
-    private String orderState;
+    private String id, orderTime, orderState;
     private Address shippingAddress;
     private Collection<OrderItem> items;
 
-    public Order(String id, String bsKey, String orderState, String orderTime,
-                 Address shippingAddress, Collection<OrderItem> items) {
+    @Override
+    public String toString(){
+        return "Order: " + id;
+    }
+
+    public Order(String id, String orderState, String orderTime, Address shippingAddress, Collection<OrderItem> items) {
         this.id = id;
-        this.bsKey = bsKey;
         this.items = items;
         this.orderState = orderState;
         this.orderTime = orderTime;
         this.shippingAddress = shippingAddress;
     }
 
-    public Order() {
-    }
-
-    @Override
-    public String toString() {
-        return bsKey;
-    }
+    public Order(){}
 
     public String getId() {
         return id;
@@ -39,14 +33,6 @@ public class Order {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getBsKey() {
-        return bsKey;
-    }
-
-    public void setBsKey(String bsKey) {
-        this.bsKey = bsKey;
     }
 
     public Collection<OrderItem> getItems() {

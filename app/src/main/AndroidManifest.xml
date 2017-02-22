@@ -9,8 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.infosupport.kantilever_order_management.DashboardActivity"
+        <activity android:name="com.infosupport.kantilever_order_management.DashboardActivity"
             android:label="@string/title_dashboard">
             <intent-filter android:label="@string/app_name_short">
                 <action android:name="android.intent.action.MAIN" />

@@ -18,26 +18,17 @@ import com.android.volley.toolbox.Volley;
  * Created by maart on 19-1-2017.
  */
 
-public final class RequestQueueSingleton {
+public class RequestQueueSingleton {
     private static RequestQueueSingleton mInstance;
     private RequestQueue requestQueue;
     private static Context ctx;
-
-    public static final String BASE_URL = "http://10.32.40.194:10001/bsbestellingenbeheer/";
-    public static final String ALL_ORDERS_URL = BASE_URL + "orders/";
-    public static final String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
-    public static final String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
-    public static final String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
-    public static final String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
-
-    private final int retryMs = 1000;
 
     private RequestQueueSingleton(Context context) {
         ctx = context;
         requestQueue = getRequestQueue();
     }
 
-    private RequestQueue getRequestQueue() {
+    public RequestQueue getRequestQueue() {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
         }
@@ -52,13 +43,44 @@ public final class RequestQueueSingleton {
     }
 
     public <T> void addToRequestQueue(Request<T> req) {
-        req.setRetryPolicy(new DefaultRetryPolicy(retryMs, 2, 2));
+        req.setRetryPolicy(new DefaultRetryPolicy(1000, 2, 2));
         getRequestQueue().add(req);
     }
 
+    public static String BASE_URL = "http://10.32.41.111:10007/";
+    public static String ALL_ORDERS_URL = BASE_URL + "orders/";
+    public static String POSTED_ORDERS_URL = BASE_URL + "orders/posted";
+    public static String PACKED_ORDERS_URL = BASE_URL + "orders/packed";
+    public static String STATUS_TO_PACKED_URL = BASE_URL + "orders/pack/";
+    public static String STATUS_TO_SENT_URL = BASE_URL + "orders/sent/";
+
+//    private void getOrders(String url, final Activity activity) {
+//        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+//            @Override
+//            public void onResponse(JSONArray jsonArray) {
+//                List<Order> mOrders = JSONParser.parseOrdersJsonArray(jsonArray);
+//                Content.clearOrders();
+//                for (Order order : mOrders) {
+//                    Content.addOrder(order);
+//                }
+//                activity.setL
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.v("getOrders", String.valueOf(error));
+//                Toast.makeText(ctx, "Could not connect to the server!", Toast.LENGTH_SHORT).show();
+//                setListAdapter(new ArrayAdapter<>(ctx,
+//                        android.R.layout.simple_list_item_activated_1,
+//                        android.R.id.text1, new ArrayList<>()));
+//            }
+//        });
+//        mInstance.addToRequestQueue(request);
+//    }
+
     public void setOrderToStatus(String url, final String orderId, final Activity activity) {
-        String finalUrl = url + orderId;
-        StringRequest request = new StringRequest(Request.Method.POST, finalUrl, new Response.Listener<String>() {
+        url += orderId;
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Intent i = new Intent(activity, OrderListActivity.class);

@@ -5,9 +5,7 @@ package com.infosupport.kantilever_order_management.domain;
  */
 
 public class Address {
-    private String street;
-    private String zip;
-    private String city;
+    private String street, zip, city;
 
     public Address(String city, String street, String zip) {
         this.city = city;
@@ -15,7 +13,7 @@ public class Address {
         this.zip = zip;
     }
 
-    public String toString() {
+    public String toString(){
         return city + ", " + street + ", " + zip;
     }
 
